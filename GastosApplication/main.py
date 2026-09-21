@@ -1,4 +1,5 @@
 import json
+from multiprocessing import Value
 import os
 
 ARQUIVO = "gastos.json"
@@ -21,12 +22,21 @@ categorias = [
 def salvar_gasto():
     with open(ARQUIVO, "w", encoding="utf-8") as arquivo:
         json.dump(gastos, arquivo, indent=4)
+        arquivo.close()
 
 def adicionar_gasto():
-    descricao = input("Digite a descrição: ")
-    valor = float(input("Digite o valor: "))
+    descricao = input("Digite a descrição do gasto: ")
+    try:
+        valor = float(input("Digite o valor: "))
+        if valor <= 0:
+            print("Erro: Digite um número positivo!")
+            continue
+        return valor    
+    except ValueError:
+        print("Erro: Digite um valor válido!")
+
     categoria = input("Digite a categoria: ").lower()
-    data = input("Digite a data (AAAA-MM-DD): ")
+    data = input("Digite a data (AAAA/MM/DD): ")
 
     novo_gasto = {
         "id": len(gastos) + 1,
@@ -59,6 +69,7 @@ while True:
 
     if selecionar == 1:
         print("Você selecionou adicionar!")
+        adicionar_gasto()
     elif selecionar == 2:
         print("Você selecionou listar!")
     elif selecionar == 3:
