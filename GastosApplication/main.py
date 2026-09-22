@@ -28,14 +28,18 @@ def adicionar_gasto():
     descricao = input("Digite a descrição do gasto: ")
     try:
         valor = float(input("Digite o valor: "))
-        if valor <= 0:
+        if valor > 0:
+            categoria = input("Digite a categoria: ").lower()
+            data = input("Digite a data (AAAA/MM/DD): ")
+            pass
+        else:
             print("Erro: Digite um número positivo!")
-        return valor
+            return valor
+        
     except ValueError:
         print("Erro: Digite um valor válido!")
-        return valor
-    categoria = input("Digite a categoria: ").lower()
-    data = input("Digite a data (AAAA/MM/DD): ")
+        return 
+    
 
     novo_gasto = {
         "id": len(gastos) + 1,
