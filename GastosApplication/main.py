@@ -35,12 +35,10 @@ def adicionar_gasto():
         else:
             print("Erro: Digite um número positivo!")
             return valor
-        
     except ValueError:
         print("Erro: Digite um valor válido!")
         return 
     
-
     novo_gasto = {
         "id": len(gastos) + 1,
         "descricao": descricao,
@@ -52,6 +50,12 @@ def adicionar_gasto():
     salvar_gasto()
     print("Gasto adicionado com sucesso!")
     
+
+def listar_gasto():
+    with open(ARQUIVO, "r", encoding="utf-8" ) as arquivo:
+        dados = json.load(ARQUIVO)
+    for i in dados:
+        print(f"[{i['id']} {i['descricao']} {i['valor']} {i['categoria']} {i['data']}]" )
 
 print("=========MENU DE GASTOS=========")
 
@@ -67,7 +71,7 @@ while True:
     try:
         selecionar = int(input("Escolha uma opção: "))
     except ValueError:
-        print("Digite apenas números!")
+        print("Erro. Digite uma opção válida da lista!")
         continue
 
     if selecionar == 1:
@@ -75,6 +79,7 @@ while True:
         adicionar_gasto()
     elif selecionar == 2:
         print("Você selecionou listar!")
+        listar_gasto()
     elif selecionar == 3:
         print("Você selecionou editar!")
     elif selecionar == 4:
