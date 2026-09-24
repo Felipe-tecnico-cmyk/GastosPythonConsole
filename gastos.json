@@ -1,16 +1,9 @@
 [
     {
         "id": 1,
-        "descricao": "Compras",
-        "valor": 145.78,
-        "categoria": "mercado",
-        "data": "2026/10/21"
-    },
-    {
-        "id": 2,
-        "descricao": "Conserto do ve\u00edculo",
-        "valor": 968.99,
-        "categoria": "reparos",
-        "data": "2026/12/21"
+        "descricao": "Manuten\u00e7\u00e3o do carro",
+        "valor": 972.98,
+        "categoria": "reparos ve\u00edculo",
+        "data": "2026/08/19"
     }
 ]

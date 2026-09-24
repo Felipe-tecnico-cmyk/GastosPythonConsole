@@ -21,8 +21,7 @@ categorias = [
 
 def salvar_gasto():
     with open(ARQUIVO, "w", encoding="utf-8") as arquivo:
-        json.dump(gastos, arquivo, indent=4)
-        arquivo.close()
+        json.dump(gastos, arquivo, indent=4, ensure_ascii=False)
 
 def adicionar_gasto():
     descricao = input("Digite a descrição do gasto: ")
